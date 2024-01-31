@@ -10,16 +10,16 @@ public class Employee {
     private Long empid;
 
     @Column(name = "emp_name")
-    private String emp_name;
+    private String empName;
 
     @Column(name = "emp_salary")
-    private Float emp_salary;
+    private Float empSalary;
 
     @Column(name = "emp_age")
-    private int emp_age;
+    private int empAge;
 
     @Column(name = "emp_city")
-    private String emp_city;
+    private String empCity;
 
     public Long getEmpid() {
         return empid;
@@ -29,57 +29,57 @@ public class Employee {
         this.empid = empid;
     }
 
-    public String getEmp_name() {
-        return emp_name;
+    public String getEmpName() {
+        return empName;
     }
 
-    public void setEmp_name(String emp_name) {
-        this.emp_name = emp_name;
+    public void setEmpName(String empName) {
+        this.empName = empName;
     }
 
-    public Float getEmp_salary() {
-        return emp_salary;
+    public Float getEmpSalary() {
+        return empSalary;
     }
 
-    public void setEmp_salary(Float emp_salary) {
-        this.emp_salary = emp_salary;
+    public void setEmpSalary(Float empSalary) {
+        this.empSalary = empSalary;
     }
 
-    public int getEmp_age() {
-        return emp_age;
+    public int getEmpAge() {
+        return empAge;
     }
 
-    public void setEmp_age(int emp_age) {
-        this.emp_age = emp_age;
+    public void setEmpAge(int empAge) {
+        this.empAge = empAge;
     }
 
-    public String getEmp_city() {
-        return emp_city;
+    public String getEmpCity() {
+        return empCity;
     }
 
-    public void setEmp_city(String emp_city) {
-        this.emp_city = emp_city;
+    public void setEmpCity(String empCity) {
+        this.empCity = empCity;
     }
 
     public Employee() {
     }
 
-    public Employee(Long empid, String emp_name, Float emp_salary, int emp_age, String emp_city) {
+    public Employee(Long empid, String empName, Float empSalary, int empAge, String empCity) {
         this.empid = empid;
-        this.emp_name = emp_name;
-        this.emp_salary = emp_salary;
-        this.emp_age = emp_age;
-        this.emp_city = emp_city;
+        this.empName = empName;
+        this.empSalary = empSalary;
+        this.empAge = empAge;
+        this.empCity = empCity;
     }
 
     @Override
     public String toString() {
         return "Employee{" +
                 "empid=" + empid +
-                ", emp_name='" + emp_name + '\'' +
-                ", emp_salary=" + emp_salary +
-                ", emp_age=" + emp_age +
-                ", emp_city='" + emp_city + '\'' +
+                ", emp_name='" + empName + '\'' +
+                ", emp_salary=" + empSalary +
+                ", emp_age=" + empAge +
+                ", emp_city='" + empCity + '\'' +
                 '}';
     }
 }

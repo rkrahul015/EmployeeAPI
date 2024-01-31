@@ -1,6 +1,5 @@
 package com.employee.controller;
 
-import com.employee.EmployeeApiApplication;
 import com.employee.model.Employee;
 import com.employee.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,20 +42,20 @@ public class EmployeeController {
         }
 
     }
-    @GetMapping("/employees/city")
-    public ResponseEntity<List<Employee>> getEmployeesByCity(@RequestParam("emp_city") String emp_city) {
-        Optional<List<Employee>>  emp = employeeRepository.findByEmpCity(emp_city);
-        if(emp.isPresent())
-            return new ResponseEntity<>(emp.get(),HttpStatus.OK);
+    @GetMapping("/employees/city/{city}")
+    public ResponseEntity<List<Employee>> getEmployeesByCity(@PathVariable("city") String emp_city) {
+        List<Employee>  emp = employeeRepository.findByEmpCity(emp_city);
+        if(!emp.isEmpty())
+            return new ResponseEntity<>(emp,HttpStatus.OK);
         else
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping("/employees/age")
-    public ResponseEntity<List<Employee>> getEmployeesGreaterThanAge(@RequestParam("emp_age") int emp_age) {
-        Optional<List<Employee>>  emp = employeeRepository.findByEmpageGreaterThan(emp_age);
-        if(emp.isPresent())
-            return new ResponseEntity<>(emp.get(),HttpStatus.OK);
+    @GetMapping("/employees/age/{age}")
+    public ResponseEntity<List<Employee>> getEmployeesGreaterThanAge(@PathVariable("age") int emp_age) {
+        List<Employee>  emp = employeeRepository.findByEmpAgeGreaterThanEqual(emp_age);
+        if(!emp.isEmpty())
+            return new ResponseEntity<>(emp,HttpStatus.OK);
         else
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
@@ -66,10 +65,10 @@ public class EmployeeController {
         var emp = employeeRepository.findById(id);
         if(emp.isPresent()) {
             Employee exitEmp = emp.get();
-            exitEmp.setEmp_name(employee.getEmp_name());
-            exitEmp.setEmp_age(employee.getEmp_age());
-            exitEmp.setEmp_city(employee.getEmp_city());
-            exitEmp.setEmp_salary(employee.getEmp_salary());
+            exitEmp.setEmpName(employee.getEmpName());
+            exitEmp.setEmpAge(employee.getEmpAge());
+            exitEmp.setEmpCity(employee.getEmpCity());
+            exitEmp.setEmpSalary(employee.getEmpSalary());
             employeeRepository.save(exitEmp);
 
             return "Employee Details against Id = "+id+ " Updated.";
